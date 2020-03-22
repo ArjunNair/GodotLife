@@ -1,0 +1,142 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://grid.gd" type="Script" id=1]
+
+[node name="root" type="Node2D"]
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource( 1 )
+grid_size = Vector2( 70, 60 )
+iteration_speed = 0.2
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 253.228
+margin_right = 293.228
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rule" type="VBoxContainer" parent="Control"]
+margin_left = 898.992
+margin_top = 42.1981
+margin_right = 998.992
+margin_bottom = 92.1981
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Rule"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Rule"
+align = 1
+
+[node name="Value" type="TextEdit" parent="Control/Rule"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 100, 20 )
+text = "B3/S23"
+minimap_width = 100
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="RunButton" type="Button" parent="Control"]
+margin_left = 901.477
+margin_top = 114.379
+margin_right = 1001.48
+margin_bottom = 144.379
+toggle_mode = true
+text = "Run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StepButton" type="Button" parent="Control"]
+margin_left = 901.477
+margin_top = 156.379
+margin_right = 1001.48
+margin_bottom = 186.379
+text = "Step"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="Button" parent="Control"]
+margin_left = 901.477
+margin_top = 203.379
+margin_right = 1001.48
+margin_bottom = 233.379
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Generation" type="VBoxContainer" parent="Control"]
+margin_left = 872.0
+margin_top = 348.256
+margin_right = 1022.0
+margin_bottom = 388.256
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Generation"]
+margin_right = 150.0
+margin_bottom = 14.0
+text = "Generation"
+align = 1
+
+[node name="Value" type="Label" parent="Control/Generation"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 32.0
+text = "0"
+align = 1
+
+[node name="RuleDialog" type="AcceptDialog" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.0
+margin_top = -37.0
+margin_right = 159.0
+margin_bottom = 74.0
+popup_exclusive = true
+window_title = "Invalid Rule"
+dialog_text = "Rules must be in the format:
+B[123..]/S[123...]"
+
+[node name="Speed" type="VBoxContainer" parent="Control"]
+margin_left = 905.0
+margin_top = 273.0
+margin_right = 1005.0
+margin_bottom = 324.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Speed"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Speed"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slider" type="HSlider" parent="Control/Speed"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 34.0
+min_value = 1.0
+value = 50.0
+tick_count = 10
+ticks_on_borders = true
+[connection signal="toggled" from="Control/RunButton" to="grid" method="_on_Button_toggled"]
+[connection signal="pressed" from="Control/StepButton" to="grid" method="_on_StepButton_pressed"]
+[connection signal="pressed" from="Control/Clear" to="grid" method="_on_Clear_pressed"]
